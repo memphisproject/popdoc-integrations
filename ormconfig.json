@@ -6,7 +6,7 @@
     "port": 5432,
     "username": "postgres",
     "password":"abc123123",
-    "database": "appointment_manager",
+    "database": "popdoc-integrations",
     "entities":[
       "src/modules/**/infra/typeorm/entities/*.ts"
     ],
