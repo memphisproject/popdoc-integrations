@@ -5,7 +5,7 @@ export default class CreateRSSIntegration1614686381411
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'rss_integration',
+        name: 'rss_subscription',
         columns: [
           {
             name: 'id',
@@ -48,6 +48,6 @@ export default class CreateRSSIntegration1614686381411
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('rss_integration');
+    await queryRunner.dropTable('rss_subscription');
   }
 }

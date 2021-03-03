@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
-import IRSSIntegrationRepository from '../repositories/IRSSIntegrationRepository';
+import IRSSSubscriptionRepository from '../repositories/IRSSSubscriptionRepository';
 
 interface IRequest {
   subscription_id: string;
@@ -9,19 +9,19 @@ interface IRequest {
 @injectable()
 class UnsubscribeRSSFeedService {
   constructor(
-    @inject('RSSIntegrationRepository')
-    private rssIntegrationRepository: IRSSIntegrationRepository,
+    @inject('RSSSubscriptionRepository')
+    private rssSubscriptionRepository: IRSSSubscriptionRepository,
   ) {}
 
   public async execute({ subscription_id }: IRequest): Promise<void> {
-    const subscription = this.rssIntegrationRepository.getSubscriptionById(
+    const subscription = this.rssSubscriptionRepository.getSubscriptionById(
       subscription_id,
     );
     if (!subscription) {
       throw new AppError('Subscription doesnt exist');
     }
 
-    await this.rssIntegrationRepository.unsubscribeFeed(subscription_id);
+    await this.rssSubscriptionRepository.unsubscribeFeed(subscription_id);
   }
 }
 

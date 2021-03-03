@@ -1,7 +1,5 @@
 import ISubscribeFeedDTO from '@modules/rss/dtos/ISubscribeFeedDTO';
-import RSSIntegration from '@modules/rss/infra/typeorm/entities/RSSIntegration';
 import { uuid } from 'uuidv4';
-import IRSSIntegrationRepository from '../IRSSIntegrationRepository';
 
 export default class FakeRSSIntegrationRepository
   implements IRSSIntegrationRepository {

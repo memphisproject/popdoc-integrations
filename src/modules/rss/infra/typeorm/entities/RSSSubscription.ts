@@ -9,8 +9,8 @@ import {
   ManyToOne,
 } from 'typeorm';
 
-@Entity('rss_integration')
-class RSSIntegration {
+@Entity('rss_subscription')
+class RSSSubscription {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -31,4 +31,4 @@ class RSSIntegration {
   updated_at: Date;
 }
 
-export default RSSIntegration;
+export default RSSSubscription;
