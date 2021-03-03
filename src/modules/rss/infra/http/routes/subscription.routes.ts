@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 import SubscriptionController from '../controllers/SubscriptionController';
+import RSSUserSubscriptionController from '../controllers/UserSubscriptionController';
 
 const rssSubscritionRouter = Router();
 
 const subscriptionController = new SubscriptionController();
+const userSubscriptionsController = new RSSUserSubscriptionController();
 
 rssSubscritionRouter.post(
   '/',
@@ -15,6 +17,16 @@ rssSubscritionRouter.post(
     },
   }),
   subscriptionController.create,
+);
+
+rssSubscritionRouter.get(
+  '/me/:user_id',
+  celebrate({
+    [Segments.PARAMS]: {
+      user_id: Joi.string().uuid().required(),
+    },
+  }),
+  userSubscriptionsController.index,
 );
 
 export default rssSubscritionRouter;

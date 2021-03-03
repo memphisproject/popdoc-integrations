@@ -12,10 +12,13 @@ export default class RSSSubscriptionRepository
     this.ormRepository = getRepository(RSSSubscription);
   }
 
-  getUserSubscriptions(
-    data: IGetUserSubscriptionDTO,
-  ): Promise<RSSSubscription[]> {
-    throw new Error('Method not implemented.');
+  async getUserSubscriptions({
+    user_id,
+  }: IGetUserSubscriptionDTO): Promise<RSSSubscription[]> {
+    const subscriptions = await this.ormRepository.find({
+      where: { user_id },
+    });
+    return subscriptions;
   }
 
   async getSubscriptionById(
