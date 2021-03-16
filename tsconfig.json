@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "strict": false,
+    "target": "esnext",
     "module": "commonjs",
     "lib": ["es6"],
     "allowJs": true,

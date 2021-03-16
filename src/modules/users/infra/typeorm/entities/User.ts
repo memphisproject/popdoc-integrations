@@ -11,7 +11,7 @@ class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column('text')
   popdoc_id: string;
 
   @CreateDateColumn()

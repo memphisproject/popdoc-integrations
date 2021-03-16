@@ -14,14 +14,14 @@ class RSSSubscription {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column('text')
   user_id: string;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column()
+  @Column('text')
   url: string;
 
   @CreateDateColumn()
