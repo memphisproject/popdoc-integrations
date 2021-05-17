@@ -24,6 +24,9 @@ class RSSSubscription {
   @Column('text')
   url: string;
 
+  @Column('text')
+  title: string;
+
   @CreateDateColumn()
   created_at: Date;
 

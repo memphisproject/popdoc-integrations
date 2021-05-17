@@ -5,9 +5,9 @@ import UnsubscribeRSSFeedService from '@modules/rss/services/UnsubscribeRSSFeedS
 
 export default class RSSSubscriptionController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { url, user_id } = request.body;
+    const { url, user_id, title } = request.body;
     const addSubscription = container.resolve(SubscribeRSSFeedService);
-    const subscription = await addSubscription.execute({ url, user_id });
+    const subscription = await addSubscription.execute({ url, user_id, title });
     return response.json({ subscription });
   }
 

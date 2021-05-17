@@ -7,6 +7,7 @@ import RSSSubscription from '../infra/typeorm/entities/RSSSubscription';
 interface IRequest {
   user_id: string;
   url: string;
+  title: string;
 }
 
 @injectable()
@@ -18,7 +19,11 @@ class SubscribeRSSFeedService {
     private rssSubscriptionRepository: IRSSSubscriptionRepository,
   ) {}
 
-  public async execute({ user_id, url }: IRequest): Promise<RSSSubscription> {
+  public async execute({
+    user_id,
+    url,
+    title,
+  }: IRequest): Promise<RSSSubscription> {
     const userExists = await this.usersRepository.findById(user_id);
 
     if (!userExists) {
@@ -28,6 +33,7 @@ class SubscribeRSSFeedService {
     const rssSubscription = await this.rssSubscriptionRepository.subscribeFeed({
       user_id,
       url,
+      title,
     });
 
     return rssSubscription;
