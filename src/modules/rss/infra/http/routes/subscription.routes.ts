@@ -29,4 +29,14 @@ rssSubscritionRouter.get(
   userSubscriptionsController.index,
 );
 
+rssSubscritionRouter.delete(
+  '/:subscription_id',
+  celebrate({
+    [Segments.PARAMS]: {
+      subscription_id: Joi.string().uuid().required(),
+    },
+  }),
+  subscriptionController.delete,
+);
+
 export default rssSubscritionRouter;

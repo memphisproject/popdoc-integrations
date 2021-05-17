@@ -22,11 +22,10 @@ class CreateUserService {
     if (userAlreadyExists) {
       throw new AppError('User already registered');
     }
-    const user = await this.usersRepository.create({
+
+    return this.usersRepository.create({
       popdoc_id,
     });
-
-    return user;
   }
 }
 
