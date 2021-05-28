@@ -14,7 +14,6 @@ rssSubscritionRouter.post(
     [Segments.BODY]: {
       user_id: Joi.string().uuid().required(),
       url: Joi.string().required(),
-      title: Joi.string(),
     },
   }),
   subscriptionController.create,
