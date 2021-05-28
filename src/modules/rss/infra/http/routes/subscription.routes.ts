@@ -8,16 +8,7 @@ const rssSubscritionRouter = Router();
 const subscriptionController = new SubscriptionController();
 const userSubscriptionsController = new RSSUserSubscriptionController();
 
-rssSubscritionRouter.post(
-  '/',
-  celebrate({
-    [Segments.BODY]: {
-      user_id: Joi.string().uuid().required(),
-      url: Joi.string().required(),
-    },
-  }),
-  subscriptionController.create,
-);
+rssSubscritionRouter.post('/', subscriptionController.create);
 
 rssSubscritionRouter.get(
   '/me/:user_id',
