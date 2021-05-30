@@ -27,6 +27,9 @@ class RSSSubscription {
   @Column('text')
   title: string;
 
+  @Column('text')
+  logo: string;
+
   @CreateDateColumn()
   created_at: Date;
 

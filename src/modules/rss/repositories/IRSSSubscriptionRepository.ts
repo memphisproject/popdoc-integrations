@@ -9,4 +9,5 @@ export default interface IRSSSubscriptionRepository {
   getUserSubscriptions(
     data: IGetUserSubscriptionDTO,
   ): Promise<RSSSubscription[]>;
+  updateSubscriptionLogo(imageURL: string): Promise<RSSSubscription>;
 }

@@ -1,11 +1,12 @@
 import { MigrationInterface, QueryRunner, TableColumn } from 'typeorm';
 
-export class AddNameToRSS1621266657722 implements MigrationInterface {
+export class AddImageToRSSSubscription1622375222455
+  implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumn(
       'rss_subscription',
       new TableColumn({
-        name: 'title',
+        name: 'logo',
         type: 'varchar',
         isNullable: true,
       }),
@@ -13,6 +14,6 @@ export class AddNameToRSS1621266657722 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropColumn('rss_subscription', 'title');
+    await queryRunner.dropColumn('rss_subscription', 'logo');
   }
 }
