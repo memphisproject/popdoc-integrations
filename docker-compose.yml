@@ -3,7 +3,7 @@ services:
   database:
     image: "postgres:9.6-alpine"
     ports:
-      - "5432:5432" # use latest official postgres version
+      - "5432:5432"
     env_file:
       - database.env # configure postgres
     volumes:
@@ -12,12 +12,11 @@ services:
   api:
     restart: always
     container_name: api
-    build: './'
+    build: '.'
     ports:
       - "3333:3333"
-    depends_on: 
+    depends_on:
       - database
     links:
       - database
 
-  
