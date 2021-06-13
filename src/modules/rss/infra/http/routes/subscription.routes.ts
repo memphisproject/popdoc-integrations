@@ -30,4 +30,17 @@ rssSubscritionRouter.delete(
   subscriptionController.delete,
 );
 
+rssSubscritionRouter.patch(
+  '/:subscription_id',
+  celebrate({
+    [Segments.PARAMS]: {
+      subscription_id: Joi.string().uuid().required(),
+    },
+    [Segments.BODY]: {
+      imageUrl: Joi.string().required(),
+    },
+  }),
+  subscriptionController.update,
+);
+
 export default rssSubscritionRouter;

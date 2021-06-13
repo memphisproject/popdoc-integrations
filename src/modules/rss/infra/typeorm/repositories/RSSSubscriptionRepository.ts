@@ -37,4 +37,8 @@ export default class RSSSubscriptionRepository
   async unsubscribeFeed(subscriptionId: string): Promise<void> {
     await this.ormRepository.delete(subscriptionId);
   }
+
+  async save(rssSubscription: RSSSubscription): Promise<RSSSubscription> {
+    return this.ormRepository.save(rssSubscription);
+  }
 }

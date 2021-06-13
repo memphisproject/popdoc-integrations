@@ -22,7 +22,6 @@ class FetchRSSFeedService {
     );
 
     const rssFeed = await this.rssParser.getFeed(rssSubscription.url);
-
     return rssFeed;
   }
 }

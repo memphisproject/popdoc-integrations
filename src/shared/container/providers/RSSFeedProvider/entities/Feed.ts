@@ -1,7 +1,11 @@
 import FeedItem from './FeedItem';
 
-export default class Feedtem {
+export default class Feed {
   link: string;
+
+  image: string;
+
+  icon: string;
 
   feedUrl: string;
 

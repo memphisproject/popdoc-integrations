@@ -2,6 +2,7 @@ import SubscribeRSSFeedService from '@modules/rss/services/SubscribeRSSFeedServi
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import UnsubscribeRSSFeedService from '@modules/rss/services/UnsubscribeRSSFeedService';
+import UpdateSubscriptionLogo from '@modules/rss/services/UpdateSubscriptionLogo';
 
 export default class RSSSubscriptionController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -16,5 +17,17 @@ export default class RSSSubscriptionController {
     const removeSubscription = container.resolve(UnsubscribeRSSFeedService);
     await removeSubscription.execute({ subscription_id });
     return response.sendStatus(200);
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { subscription_id } = request.params;
+    const { imageUrl } = request.body;
+
+    const editSubscriptionLogo = container.resolve(UpdateSubscriptionLogo);
+    const subscription = await editSubscriptionLogo.execute({
+      subscription_id,
+      imageUrl,
+    });
+    return response.json({ subscription });
   }
 }
